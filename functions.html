@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+  <meta charset="utf-8">
+  <title>Arrow Functions</title>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Functions</h1>
+<p>Open the console</p>
+<script type="text/babel">
+  function myFunction(a, b, ...args) {
+    console.log(args);
+  }
+  myFunction(1, 2, 3, 4, 5);
+
+  // function myFunction(a, b) {
+  //   let args = Array.prototype.slice.call(arguments, myFunction.length);
+  //   // console.log(myFunction.length);
+  //   console.log(args);
+  // }
+  //
+  // myFunction(1,2,3,4,5);
+
+  // function sayHi() {
+  //   for(let i = 0; i < arguments.length; i++) {
+  //     console.log('Привет, ' + arguments[i]);
+  //   }
+  // }
+  // sayHi('Винни', 'Пятачок');
+
+
+  // function makeRequest(url, timout, callback) {
+  //   timout = timout || 2000;
+  //   callback = callback || sumFunction(){};
+  // }
+  //
+  // function makeRequest(url, timeout, callback) {
+  //   timeout = (typeof timeout !== "undefined") ? timeout : 2000;
+  //   callback = (typeof  callback !== "undefined") ? callback : function() {};
+  // }
+
+  // function makeRequest(url, timeout = 2000, callback = function() {}) {
+  // }
+</script>
+</body>
+</html>

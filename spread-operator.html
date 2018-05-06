@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+  <meta charset="utf-8">
+  <title>Arrow Functions</title>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Spread</h1>
+<p>Open the console</p>
+<script type="text/babel">
+  // function myFunction(a, b) {
+  //   return a + b;
+  // }
+  //
+  // var data = [1, 4];
+  // var result = myFunction.apply(null, data);
+  // console.log(result);
+  //
+  // let result2 = myFunction(...data);
+
+  // let array1 = [2,3,4];
+  // let array2 = [1, ...array1, 5, 6, 7];
+  // console.log(array2);
+
+  // var array1 = [2, 3, 4];
+  // var array2 = [1];
+  //
+  // Array.prototype.push.apply(array2, array1);
+  // console.log(array2);
+
+  // let array1 = [2, 3, 4];
+  // let array2 = [1];
+  // array2.push(...array1);
+  // console.log(array2);
+
+  // let array1 = [1];
+  // let array2 = [2];
+  // let array3 = [...array1, ...array2, ...[3,4]];
+  // let array4 = [5];
+  // function myFunction(a, b, c, d, e) {
+  //   return a + b + c + d + e;
+  // }
+  // let result = myFunction(...array3, ...array4);
+  // console.log(result);
+
+  // function myFunction(a, b) {
+  //   var args = Array.prototype.slice.call(arguments, myFunction.length);
+  //   console.log(args);
+  // }
+  // myFunction(1, 2, 3, 4, 5);
+  function myFunction(a, b, ...args) {
+    console.log(args);
+  }
+  myFunction(1,2,3,4,5);
+
+
+
+</script>
+</body>
+</html>
