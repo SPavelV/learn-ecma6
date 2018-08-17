@@ -134,26 +134,58 @@
 
 // - Lack of biding this
 
-let PageHandler = {
-  id: "123456",
-  init: function () {
-    document.addEventListener('click', function (e) {
-      this.doSomething(e.type);
-    }.bind(this), false);
-  },
+// let PageHandler = {
+//   id: "123456",
+//   init: function () {
+//     document.addEventListener('click', function (e) {
+//       this.doSomething(e.type);
+//     }.bind(this), false);
+//   },
+//
+//   doSomething: function (type) {
+//     console.log('Handling ' + type + ' for ' + this.id);
+//   }
+// };
+//
+// let PageHandler2 = {
+//   id: '123456',
+//   init: function () {
+//     document.addEventListener('click',
+//               event => this.doSomething(event.type), false);
+//   },
+//   doSomething: function (type) {
+//     console.log('Handing ' + type + ' for ' + this.id);
+//   }
+// };
 
-  doSomething: function (type) {
-    console.log('Handling ' + type + ' for ' + this.id);
-  }
-};
+// - Arrows functions and arrays
 
-let PageHandler2 = {
-  id: '123456',
-  init: function () {
-    document.addEventListener('click',
-              event => this.doSomething(event.type), false);
-  },
-  doSomething: function (type) {
-    console.log('Handing ' + type + ' for ' + this.id);
-  }
-};
+// var result = values.sort(function (a, b) {
+//   return a - b;
+// });
+//
+// var  result2 = values.sort((a, b) => a - b);
+
+
+// - Lack of binding arguments
+
+// function createArrowFunctionReturningFirstArg() {
+//   return () => arguments[0];
+// }
+//
+// var arrowFunction = createArrowFunctionReturningFirstArg(5);
+// console.log(arrowFunction());
+
+// - Identification of arrow functions
+
+var comparator = (a, b) => a - b;
+console.log(typeof comparator);
+console.log(comparator instanceof Function);
+
+var sum = (num1, num2) => num1 + num2;
+
+console.log(sum.call(null, 1, 2));
+console.log(sum.apply(null, [1,2]));
+
+var boundSum = sum.bind(null, 1, 2);
+console.log(boundSum());
