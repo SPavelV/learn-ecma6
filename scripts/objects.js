@@ -55,10 +55,91 @@
 // console.log(person['first name']);
 // console.log(person[lastName]);
 
-let suffix = ' name';
-const person2 = {
-  ['first' + suffix]: 'Nicolas',
-  ['last' + suffix]: 'Zakas'
-};
-console.log(person2['first name']);
-console.log(person2['last name']);
+// let suffix = ' name';
+// const person2 = {
+//   ['first' + suffix]: 'Nicolas',
+//   ['last' + suffix]: 'Zakas'
+// };
+// console.log(person2['first name']);
+// console.log(person2['last name']);
+
+// // New methods:
+//
+// // - Object.is():
+//
+// console.log(+0 == -0);
+// console.log(+0 === -0);
+// console.log(Object.is(+0, -0));
+//
+// console.log(NaN == NaN);
+// console.log(NaN === NaN);
+// console.log(Object.is(NaN, NaN));
+//
+// console.log(5 == 5);
+// console.log(5 == '5');
+// console.log(5 === 5);
+// console.log(5 === '5');
+// console.log(Object.is(5, 5));
+// console.log(Object.is(5, '5'));
+
+// - Object assign():
+
+// old version
+// function mixin(receiver, supplier) {
+//   Object.keys(supplier).forEach(function (key) {
+//     receiver[key] = supplier[key]
+//
+//   });
+//
+//   return receiver;
+// }
+//
+// function EventTarget() {
+//   // some code
+// }
+//
+// EventTarget.prototype = {
+//   constructor: EventTarget,
+//   emit: function () {
+//     // some code
+//   },
+//   on: function () {
+//     // some code
+//   }
+// };
+//
+// const myObject = {};
+// mixin(myObject, EventTarget.prototype);
+// myObject.emit('somethingChange');
+
+// // new version
+// function EventTarget() {
+//   // some code
+// }
+// EventTarget.prototype = {
+//   constructor: EventTarget,
+//   emit: function () {
+//     // some code
+//   },
+//   on: function () {
+//     // some code
+//   }
+// };
+// const myObject = {};
+// Object.assign(myObject, EventTarget.prototype);
+// myObject.emit('somethingChanged');
+
+const receiver = {};
+Object.assign(receiver,
+  {
+    type: 'js',
+    name: 'file.js'
+  },
+  {
+    type: 'css'
+  }
+);
+
+console.log(receiver.type);
+console.log(receiver.name);
+
