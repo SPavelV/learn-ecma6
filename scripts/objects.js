@@ -128,18 +128,52 @@
 // const myObject = {};
 // Object.assign(myObject, EventTarget.prototype);
 // myObject.emit('somethingChanged');
+//
+// const receiver = {};
+// Object.assign(receiver,
+//   {
+//     type: 'js',
+//     name: 'file.js'
+//   },
+//   {
+//     type: 'css'
+//   }
+// );
+//
+// console.log(receiver.type);
+// console.log(receiver.name);
+//
+// let receiver = {},
+//     supplier = {
+//       get name() {
+//         return 'file.js'
+//       }
+//     };
+//
+// Object.assign(receiver, supplier);
+//
+// let descriptor = Object.getOwnPropertyDescriptor(receiver, 'name');
+//
+// console.log(descriptor.value);
+// console.log(descriptor.get);
 
-const receiver = {};
-Object.assign(receiver,
-  {
-    type: 'js',
-    name: 'file.js'
-  },
-  {
-    type: 'css'
-  }
-);
+// // Dublicates of properties in object literals.
+// let person = {
+//   name: 'Nicolas',
+//   name: 'greg'
+// };
+// console.log(person.name);
 
-console.log(receiver.type);
-console.log(receiver.name);
+// Dublicate props in the object literal
 
+const obj = {
+  a: 1,
+  0: 1,
+  c: 1,
+  2: 1,
+  b: 1,
+  1: 1
+};
+
+obj.d = 1;
+console.log(Object.getOwnPropertyNames(obj).join(''));
