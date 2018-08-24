@@ -157,23 +157,100 @@
 // console.log(descriptor.value);
 // console.log(descriptor.get);
 
-// // Dublicates of properties in object literals.
+// // - Dublicates of properties in object literals.
 // let person = {
 //   name: 'Nicolas',
 //   name: 'greg'
 // };
 // console.log(person.name);
 
-// Dublicate props in the object literal
+// - enumeration of own props
+// const obj = {
+//   a: 1,
+//   0: 1,
+//   c: 1,
+//   2: 1,
+//   b: 1,
+//   1: 1
+// };
+//
+// obj.d = 1;
+// console.log(Object.getOwnPropertyNames(obj).join(''));
 
-const obj = {
-  a: 1,
-  0: 1,
-  c: 1,
-  2: 1,
-  b: 1,
-  1: 1
+// Extensions in prototypes:
+
+// - Changing the prototype object
+// let person = {
+//   getGreeting() {
+//     return 'Hello';
+//   }
+// };
+//
+// let dog = {
+//   getGreeting() {
+//     return 'Woof';
+//   }
+// };
+//
+// let friend = Object.create(person);
+// console.log(friend.getGreeting());
+//
+// console.log(Object.getPrototypeOf(friend) === person);
+//
+// Object.setPrototypeOf(friend, dog);
+// console.log(friend.getGreeting());
+// console.log(Object.getPrototypeOf(friend) === dog);
+
+// // - Simple access to the prototype using super link
+//
+//old version:
+//
+// let person = {
+//   getGreeting() {
+//     return 'Hello';
+//   }
+// };
+//
+// let dog = {
+//   getGreeting() {
+//     return 'Woof'
+//   }
+// };
+//
+// let friend = {
+//   getGreeting(){
+//     return Object.getPrototypeOf(this).getGreeting.call(this) + ', hi!';
+//   }
+// };
+//
+// Object.setPrototypeOf(friend, person);
+// console.log(friend.getGreeting());
+//
+// console.log(Object.getPrototypeOf(friend) === person);
+//
+// Object.setPrototypeOf(friend, dog);
+// console.log(friend.getGreeting());
+// console.log(Object.getPrototypeOf(friend) === dog);
+
+//new version:
+
+let person = {
+  getGreeting() {
+    return 'Hello';
+  }
 };
 
-obj.d = 1;
-console.log(Object.getOwnPropertyNames(obj).join(''));
+let friend = {
+  getGreeting(){
+    return super.getGreeting() + ', hi!';
+  }
+};
+
+Object.setPrototypeOf(friend, person);
+
+let relative = Object.create(friend);
+
+console.log(person.getGreeting());
+console.log(friend.getGreeting());
+console.log(relative.getGreeting());
+
