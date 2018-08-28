@@ -234,23 +234,41 @@
 
 //new version:
 
+// let person = {
+//   getGreeting() {
+//     return 'Hello';
+//   }
+// };
+
+// let friend = {
+//   getGreeting(){
+//     return super.getGreeting() + ', hi!';
+//   }
+// };
+
+// Object.setPrototypeOf(friend, person);
+
+// let relative = Object.create(friend);
+
+// console.log(person.getGreeting());
+// console.log(friend.getGreeting());
+// console.log(relative.getGreeting());
+
+// Formal definition of the method:
 let person = {
   getGreeting() {
     return 'Hello';
   }
-};
+}
+
+function shareGreeting() {
+  return 'Hi!';
+}
 
 let friend = {
-  getGreeting(){
+  getGreeting()  {
     return super.getGreeting() + ', hi!';
   }
 };
-
 Object.setPrototypeOf(friend, person);
-
-let relative = Object.create(friend);
-
-console.log(person.getGreeting());
 console.log(friend.getGreeting());
-console.log(relative.getGreeting());
-
