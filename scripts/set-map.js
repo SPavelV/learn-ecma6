@@ -95,5 +95,118 @@
 
 // Converting a Set to an Array:
 
+// let set10 = new Set([1, 2, 3, 3, 3, 3, 4, 5]),
+//     array = [...set10];
+// console.log(array);
+//
+// function eliminateDuplicates(items) {
+//   return [...new Set(items)];
+// }
+//
+// let numbers = [1, 2, 3, 3, 3, 4, 5],
+//     noDublicates = eliminateDuplicates(numbers);
+//
+// console.log(noDublicates);
 
 
+// // Sets with weak references:
+//
+// let set = new Set(),
+//     key = {};
+//
+// set.add(key);
+// console.log(set.size);
+//
+// key = null;
+// console.log(set.size);
+//
+// key = [...set][0];
+
+// let set = new WeakSet(),
+//     key = {};
+//
+// set.add(key);
+//
+// console.log(set.has(key));
+// set.delete(key);
+//
+// console.log(set.has(key));
+
+// let key1 = {},
+//     key2 = {},
+//     set = new WeakSet([key1, key2]);
+//
+// console.log(set.has(key1));
+// console.log(set.has(key2));
+
+// // Key differences between the two types of sets
+//
+// let set = new WeakSet(),
+//     key = {};
+// set.add(key);
+// console.log(set.has(key));
+//
+// key = null;
+
+// Associative Arrays in ECMAScript 6:
+
+// let map = new Map();
+// map.set('title', 'Understanding ECMAScript 6');
+// map.set('year', 2016);
+//
+// console.log(map.get('title'));
+// console.log(map.get('year'));
+
+// let map = new Map(),
+//     key1 = {},
+//     key2 = {};
+//
+// map.set(key1, 5);
+// map.set(key2, 42);
+//
+// console.log(map.get(key2));
+// console.log(map.get(key1));
+
+// //Map methods:
+//
+// let map = new Map();
+// map.set('name', 'Nicolas');
+// map.set('age', 25);
+//
+// console.log(map.size);
+//
+// console.log(map.has('name'));
+// console.log(map.get('name'));
+//
+// console.log(map.has('age'));
+// console.log(map.get('age'));
+//
+// map.delete('name');
+// console.log(map.has(name));
+// console.log(map.get(name));
+// console.log(map.size);
+//
+// map.clear();
+// console.log(map.has('name'));
+// console.log(map.get('name'));
+// console.log(map.has('age'));
+// console.log(map.get('age'));
+// console.log(map.size);
+
+// // Initializing Map:
+//
+// let map = new Map([['name', 'Nicolas'], ['age', 25]]);
+// console.log(map.has('name'));
+// console.log(map.get('name'));
+// console.log(map.has('age'));
+// console.log(map.get('age'));
+// console.log(map.size);
+
+// Map method forEach:
+
+let map = new Map([ ['name', 'Nicolas'], ['age', 25] ]);
+
+map.forEach(function (value, key, ownerMap) {
+  console.log(key + ' ' + value);
+  console.log(ownerMap === map);
+});
