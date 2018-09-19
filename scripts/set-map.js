@@ -204,9 +204,90 @@
 
 // Map method forEach:
 
-let map = new Map([ ['name', 'Nicolas'], ['age', 25] ]);
+// let map = new Map([ ['name', 'Nicolas'], ['age', 25] ]);
+//
+// map.forEach(function (value, key, ownerMap) {
+//   console.log(key + ' ' + value);
+//   console.log(ownerMap === map);
+// });
 
-map.forEach(function (value, key, ownerMap) {
-  console.log(key + ' ' + value);
-  console.log(ownerMap === map);
-});
+// // Maps with weak references:
+
+// let map = new WeakMap(),
+//     element = document.querySelector('.element');
+//
+// map.set(element, 'Original');
+//
+// let value = map.get(element);
+// console.log(value);
+//
+// element.parentNode.removeChild(element);
+// element = null;
+
+// // Initialization of associative arrays with weak references:
+//
+// let key1 = {},
+//     key2 = {},
+//     map = new WeakMap([[key1,'Hello'], [key2, 42]]);
+// console.log(map.has(key1));
+// console.log(map.get(key1));
+// console.log(map.has(key2));
+// console.log(map.get(key2));
+
+// Weak maps methods:
+
+// let map = new WeakMap(),
+//     element = document.querySelector('.element');
+//
+// map.set(element, 'Original');
+//
+// console.log(map.has(element));
+// console.log(map.get(element));
+//
+// map.delete(element);
+// console.log(map.has(element));
+// console.log(map.get(element));
+
+// Private object data:
+
+// old version:
+// function Person(name) {
+//   this._name = name;
+// }
+//
+// Person.prototype.getName = function () {
+//   return this._name;
+// };
+//
+// let Person = (function () {
+//   let privateData = {},
+//       privateId = 0;
+//   function Person(name) {
+//     Object.defineProperty(this, '_id', {value: privateId++ });
+//
+//     privateData[this._id] = {
+//       name: name
+//     };
+//   }
+//
+//   Person.prototype.getName = function () {
+//     return privateData[this._id].name;
+//   };
+//
+//   return Person;
+// }());
+
+let Person = (function () {
+  let privateData = new WeakMap();
+
+  function Person(name) {
+    privateData.set(this, { name: name });
+  }
+
+  Person.prototype.getName = function () {
+    return privateData.get(this).name;
+
+    return Person;
+  }
+}());
+
