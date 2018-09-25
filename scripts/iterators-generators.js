@@ -57,19 +57,61 @@
 // console.log(iterator.next());
 // console.log(iterator.next());
 
-//Expressions of the functions of the generators:
+// //Expressions of the functions of the generators:
+//
+// let createIterator = function *(items) {
+//   for(let i = 0; i < items.length; i++) {
+//     yield items[i];
+//   }
+// };
+//
+// let iterator = createIterator([1, 2, 3]);
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
 
-let createIterator = function *(items) {
-  for(let i = 0; i < items.length; i++) {
-    yield items[i];
-  }
-};
+// // Methods-generators object:
+//
+// let o = {
+//   createIterator: function *(items) {
+//     for (let i = 0; i < items.length; i++) {
+//       yield items[i];
+//     }
+//   }
+// };
+//
+// let iterator = o.createIterator([1, 2, 3]);
 
-let iterator = createIterator([1, 2, 3]);
+// //Iterated objects and for-of loops:
+//
+// let values = [1, 2, 3];
+// for (let num of values) {
+//   console.log(num);
+// }
+
+// Access to the default iterator:
+
+let values = [1, 2, 3];
+let iterator = values[Symbol.iterator]();
+
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
 console.log(iterator.next());
-console.log(iterator.next());
+
+function isIterable(object) {
+  return typeof object[Symbol.iterator] === 'function';
+}
+
+console.log(isIterable([1, 2, 3]));
+console.log(isIterable('Hello'));
+console.log(isIterable(new Map()));
+console.log(isIterable(new Set()));
+console.log(isIterable(new WeakMap()));
+console.log(isIterable(new WeakSet()));
+
 
