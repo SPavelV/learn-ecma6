@@ -92,26 +92,102 @@
 //   console.log(num);
 // }
 
-// Access to the default iterator:
+// // Access to the default iterator:
+//
+// let values = [1, 2, 3];
+// let iterator = values[Symbol.iterator]();
+//
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
+// console.log(iterator.next());
+//
+// function isIterable(object) {
+//   return typeof object[Symbol.iterator] === 'function';
+// }
+//
+// console.log(isIterable([1, 2, 3]));
+// console.log(isIterable('Hello'));
+// console.log(isIterable(new Map()));
+// console.log(isIterable(new Set()));
+// console.log(isIterable(new WeakMap()));
+// console.log(isIterable(new WeakSet()));
 
-let values = [1, 2, 3];
-let iterator = values[Symbol.iterator]();
+// //Creating iterated objects:
+//
+// let collection = {
+//   items: [],
+//   *[Simbol.iterator](){
+//     for(let item of this.items) {
+//       yield item;
+//     }
+//   }
+// };
+//
+// collection.items.push(1);
+// collection.items.push(2);
+// collection.items.push(3);
+//
+// for(let x of collection) {
+//   console.log(x);
+// }
 
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
-console.log(iterator.next());
+//Built-in generators:
 
-function isIterable(object) {
-  return typeof object[Symbol.iterator] === 'function';
+let colors = ['red', 'green', 'blue'];
+let tracking = new Set([1234, 5678, 9012]);
+let data = new Map();
+
+data.set('title', 'Understanding ECMAScript 6');
+data.set('format', 'ebook');
+
+// for(let entry of colors.entries()) {
+//   console.log(entry);
+// }
+//
+// for(let entry of tracking.entries()) {
+//   console.log(entry);
+// }
+//
+// for(let entry of data.entries()) {
+//   console.log(entry);
+// }
+
+// for(let value of colors.values()){
+//   console.log(value);
+// }
+//
+// for(let value of tracking.values()) {
+//   console.log(value);
+// }
+//
+// for(let value of data.values()) {
+//   console.log(value);
+// }
+
+// for(let key of colors.keys()) {
+//   console.log(key);
+// }
+//
+// for(let key of tracking.keys()) {
+//   console.log(key);
+// }
+//
+// for(let key of data.keys()) {
+//   console.log(key);
+// }
+
+//Destructurization and for-of cycles
+// for(let [key, value] of data) {
+//   console.log(key + '=' + value);
+// }
+
+//Iterators nodeList:
+let divs = document.getElementsByTagName('div');
+
+for(let div of divs) {
+  console.log(div.id);
 }
-
-console.log(isIterable([1, 2, 3]));
-console.log(isIterable('Hello'));
-console.log(isIterable(new Map()));
-console.log(isIterable(new Set()));
-console.log(isIterable(new WeakMap()));
-console.log(isIterable(new WeakSet()));
 
 
