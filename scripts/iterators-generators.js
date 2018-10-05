@@ -133,14 +133,14 @@
 //   console.log(x);
 // }
 
-//Built-in generators:
-
-let colors = ['red', 'green', 'blue'];
-let tracking = new Set([1234, 5678, 9012]);
-let data = new Map();
-
-data.set('title', 'Understanding ECMAScript 6');
-data.set('format', 'ebook');
+// //Built-in generators:
+//
+// let colors = ['red', 'green', 'blue'];
+// let tracking = new Set([1234, 5678, 9012]);
+// let data = new Map();
+//
+// data.set('title', 'Understanding ECMAScript 6');
+// data.set('format', 'ebook');
 
 // for(let entry of colors.entries()) {
 //   console.log(entry);
@@ -184,10 +184,26 @@ data.set('format', 'ebook');
 // }
 
 //Iterators nodeList:
-let divs = document.getElementsByTagName('div');
+// let divs = document.getElementsByTagName('div');
+//
+// for(let div of divs) {
+//   console.log(div.id);
+// }
 
-for(let div of divs) {
-  console.log(div.id);
-}
+// //Expansion operator and iterable objects,
+// // non arrays:
+//
+// let set = new Set([1, 2, 3, 4, 5]),
+//     array = [...set];
+//
+// // console.log(array);
+//
+// let map = new Map([['name', 'Nicolas'], ['age', 25]]),
+//     array2 = [...map];
+// console.log(array2);
 
-
+let smallNumbers = [1, 2, 3],
+    bigNumbers = [100, 101, 102],
+    allNumbers = [0, ...smallNumbers, ...bigNumbers];
+console.log(allNumbers.length);
+console.log(allNumbers);
